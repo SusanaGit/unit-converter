@@ -37,27 +37,11 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun unitConverter(){
     Column{
-
-        Greeting("Android")
-        Greeting("Android")
         Row{
-
+            Text("Row1")
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    UnitConverterTheme {
-        Greeting("Android")
+        Row{
+            Text("Row2")
+        }
     }
 }
