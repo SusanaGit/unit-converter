@@ -41,22 +41,23 @@ fun UnitConverter(){
     ){
         Text("Unit Converter")
         Spacer(modifier = Modifier.height(16.dp))
-        OutlinedTextField(value = "", onValueChange = {
 
-        })
+        Row {
 
-        Spacer(modifier = Modifier.height(16.dp))
+            OutlinedTextField(
+                value = "",
+                onValueChange = {}
+            )
 
-        Row{
+            Spacer(modifier = Modifier.width(8.dp))
 
             Box {
-
                 var expanded_menu by remember {
                     mutableStateOf(false)
                 }
 
                 Button(onClick = { expanded_menu = true }) {
-                    Text("Select")
+                    Text("")
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down")
                 }
                 DropdownMenu(
@@ -68,8 +69,11 @@ fun UnitConverter(){
                     DropdownMenuItem(text = { Text("Milimeters") }, onClick = { /*TODO*/ })
                 }
             }
+        }
 
-            Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Row {
 
             Box {
 
