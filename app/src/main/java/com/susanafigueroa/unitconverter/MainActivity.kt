@@ -18,6 +18,8 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -70,11 +72,23 @@ fun UnitConverter(){
                     Text("Select")
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down")
                 }
+                DropdownMenu(expanded = false, onDismissRequest = { /*TODO*/ }) {
+                    DropdownMenuItem(text = { Text("Centimeters") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text("Meters") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text("Feet") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text("Milimeters") }, onClick = { /*TODO*/ })
+                }
             }
             Box {
                 Button(onClick = {}) {
                     Text("Select")
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down")
+                }
+                DropdownMenu(expanded = false, onDismissRequest = { /*TODO*/ }) {
+                    DropdownMenuItem(text = { Text("Centimeters") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text("Meters") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text("Feet") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text("Milimeters") }, onClick = { /*TODO*/ })
                 }
             }
         }
