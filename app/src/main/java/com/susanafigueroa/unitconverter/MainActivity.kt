@@ -45,7 +45,7 @@ fun UnitConverter(){
         Row {
 
             OutlinedTextField(
-                value = "",
+                value = "Introduce your quantity",
                 onValueChange = {}
             )
 
@@ -75,6 +75,13 @@ fun UnitConverter(){
 
         Row {
 
+            OutlinedTextField(
+                value = "Conversion to...",
+                onValueChange = {}
+            )
+
+            Spacer(modifier = Modifier.width(8.dp))
+
             Box {
 
                 var expanded_menu by remember {
@@ -82,7 +89,7 @@ fun UnitConverter(){
                 }
 
                 Button(onClick = { expanded_menu = true }) {
-                    Text("Select")
+                    Text("")
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down")
                 }
                 DropdownMenu(
@@ -95,11 +102,6 @@ fun UnitConverter(){
                 }
             }
         }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Text("Result:")
-
     }
 }
 
