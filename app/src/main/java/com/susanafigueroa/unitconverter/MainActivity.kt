@@ -33,6 +33,23 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun UnitConverter(){
+
+    var inputQuantity by remember {
+        mutableStateOf("")
+    }
+
+    var unitOrigin by remember {
+        mutableStateOf("")
+    }
+
+    var unitConvert by remember {
+        mutableStateOf("")
+    }
+
+    var result by remember {
+        mutableStateOf("")
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -45,8 +62,12 @@ fun UnitConverter(){
         Row {
 
             OutlinedTextField(
-                value = "Introduce your quantity",
-                onValueChange = {}
+                value = inputQuantity,
+                onValueChange = {},
+                label = {
+                    Text("Enter your quantity")
+                },
+                readOnly = false
             )
 
             Spacer(modifier = Modifier.width(8.dp))
@@ -57,27 +78,45 @@ fun UnitConverter(){
                 }
 
                 Button(onClick = { expanded_menu = true }) {
-                    Text("")
+                    Text(unitOrigin)
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down")
                 }
                 DropdownMenu(
                     expanded = expanded_menu,
                     onDismissRequest = { expanded_menu = false }) {
-                    DropdownMenuItem(text = { Text("Centimeters") }, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text("Meters") }, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text("Feet") }, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text("Milimeters") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text("Centimeters") }, onClick = {
+                        unitOrigin = "cm"
+                        expanded_menu = false
+                    })
+                    DropdownMenuItem(text = { Text("Meters") }, onClick = {
+                        unitOrigin = "m"
+                        expanded_menu = false
+                    })
+                    DropdownMenuItem(text = { Text("Feet") }, onClick = {
+                        unitOrigin = "feet"
+                        expanded_menu = false
+                    })
+                    DropdownMenuItem(text = { Text("Milimeters") }, onClick = {
+                        unitOrigin = "mm"
+                        expanded_menu = false
+                    })
                 }
             }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        result = obtainResult(inputQuantity, unitOrigin, unitConvert)
+
         Row {
 
             OutlinedTextField(
-                value = "Conversion to...",
-                onValueChange = {}
+                value = result,
+                onValueChange = {},
+                readOnly = true,
+                label = {
+                    Text("Result")
+                }
             )
 
             Spacer(modifier = Modifier.width(8.dp))
@@ -89,20 +128,37 @@ fun UnitConverter(){
                 }
 
                 Button(onClick = { expanded_menu = true }) {
-                    Text("")
+                    Text(unitConvert)
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down")
                 }
                 DropdownMenu(
                     expanded = expanded_menu,
                     onDismissRequest = { expanded_menu = false }) {
-                    DropdownMenuItem(text = { Text("Centimeters") }, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text("Meters") }, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text("Feet") }, onClick = { /*TODO*/ })
-                    DropdownMenuItem(text = { Text("Milimeters") }, onClick = { /*TODO*/ })
+                    DropdownMenuItem(text = { Text("Centimeters") }, onClick = {
+                        unitConvert = "cm"
+                        expanded_menu = false
+                    })
+                    DropdownMenuItem(text = { Text("Meters") }, onClick = {
+                        unitConvert = "m"
+                        expanded_menu = false
+                    })
+                    DropdownMenuItem(text = { Text("Feet") }, onClick = {
+                        unitConvert = "feet"
+                        expanded_menu = false
+                    })
+                    DropdownMenuItem(text = { Text("Milimeters") }, onClick = {
+                        unitConvert = "mm"
+                        expanded_menu = false
+                    })
                 }
             }
         }
     }
+}
+
+fun obtainResult(quantity: String, unitOrigen: String, converterTo: String): String {
+    val result = quantity + unitOrigen + converterTo
+    return result
 }
 
 @Preview(showBackground = true)
