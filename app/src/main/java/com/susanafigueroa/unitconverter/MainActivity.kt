@@ -5,12 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.susanafigueroa.unitconverter.ui.theme.UnitConverterTheme
@@ -68,7 +70,8 @@ fun UnitConverter(){
                 },
                 label = {
                     Text("Enter your quantity")
-                }
+                },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             )
 
             Spacer(modifier = Modifier.width(8.dp))
@@ -157,8 +160,42 @@ fun UnitConverter(){
     }
 }
 
-fun obtainResult(quantity: String, unitOrigen: String, converterTo: String): String {
-    val result = quantity + unitOrigen + converterTo
+fun obtainResult(quantity: String, unitOrigen: String, unitConvert: String): String {
+
+    var result = ""
+
+    if (quantity.isEmpty() || unitOrigen.isEmpty() || unitConvert.isEmpty()) {
+        return result
+    }
+
+    val quantityValue = quantity.toDoubleOrNull()
+
+    if (quantityValue != null) {
+        result = when (unitOrigen to unitConvert) {
+            "cm" to "cm" -> "$quantityValue" + unitConvert
+            "cm" to "m" -> "${quantityValue / 100}" + unitConvert
+            "cm" to "feet" -> "${quantityValue / 30.48}" + unitConvert
+            "cm" to "mm" -> "${quantityValue * 10}" + unitConvert
+
+            "m" to "cm" -> "${quantityValue * 100}" + unitConvert
+            "m" to "m" -> "$quantityValue" + unitConvert
+            "m" to "feet" -> "${quantityValue * 3.28084}" + unitConvert
+            "m" to "mm" -> "${quantityValue * 1000}" + unitConvert
+
+            "feet" to "cm" -> "${quantityValue * 30.48}" + unitConvert
+            "feet" to "m" -> "${quantityValue / 3.28084}" + unitConvert
+            "feet" to "feet" -> "$quantityValue" + unitConvert
+            "feet" to "mm" -> "${quantityValue * 304.8}" + unitConvert
+
+            "mm" to "cm" -> "${quantityValue / 10}" + unitConvert
+            "mm" to "m" -> "${quantityValue / 1000}" + unitConvert
+            "mm" to "feet" -> "${quantityValue / 304.8}" + unitConvert
+            "mm" to "mm" -> "$quantityValue mm"
+
+            else -> "error"
+        }
+    }
+
     return result
 }
 
