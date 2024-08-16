@@ -63,11 +63,12 @@ fun UnitConverter(){
 
             OutlinedTextField(
                 value = inputQuantity,
-                onValueChange = {},
+                onValueChange = {
+                    inputQuantity = it
+                },
                 label = {
                     Text("Enter your quantity")
-                },
-                readOnly = false
+                }
             )
 
             Spacer(modifier = Modifier.width(8.dp))
