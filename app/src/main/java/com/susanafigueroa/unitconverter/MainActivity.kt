@@ -61,6 +61,9 @@ fun UnitConverter(){
         OutlinedTextField(value = "", onValueChange = {
 
         })
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         Row{
             Box {
                 Button(onClick = {}) {
@@ -75,7 +78,7 @@ fun UnitConverter(){
                 }
             }
         }
-        Row{
+        /*Row{
             val context = LocalContext.current
             Button(onClick = { Toast
                 .makeText(context,
@@ -84,7 +87,7 @@ fun UnitConverter(){
             {
                 Text("Click Me!")
             }
-        }
+        }*/
         Text("Result:")
 
     }
