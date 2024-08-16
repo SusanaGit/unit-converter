@@ -10,7 +10,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
@@ -48,46 +50,43 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun UnitConverter(){
-    BoxWithConstraints {
-        val padding = maxWidth * 0.10f
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        Text("Unit Converter")
+        Spacer(modifier = Modifier.height(16.dp))
+        OutlinedTextField(value = "", onValueChange = {
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ){
-            Text("Unit Converter")
-            OutlinedTextField(value = "", onValueChange = {
-
-            })
-            Row{
-                Box {
-                    Button(onClick = {}) {
-                        Text("Select")
-                        Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down")
-                    }
-                }
-                Box {
-                    Button(onClick = {}) {
-                        Text("Select")
-                        Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down")
-                    }
+        })
+        Row{
+            Box {
+                Button(onClick = {}) {
+                    Text("Select")
+                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down")
                 }
             }
-            Row{
-                val context = LocalContext.current
-                Button(onClick = { Toast
-                    .makeText(context,
-                        "Thanks for clicking!",
-                        Toast.LENGTH_LONG).show() })
-                {
-                    Text("Click Me!")
+            Box {
+                Button(onClick = {}) {
+                    Text("Select")
+                    Icon(Icons.Default.ArrowDropDown, contentDescription = "Arrow Down")
                 }
             }
-            Text("Result:")
         }
+        Row{
+            val context = LocalContext.current
+            Button(onClick = { Toast
+                .makeText(context,
+                    "Thanks for clicking!",
+                    Toast.LENGTH_LONG).show() })
+            {
+                Text("Click Me!")
+            }
+        }
+        Text("Result:")
+
     }
 }
 
