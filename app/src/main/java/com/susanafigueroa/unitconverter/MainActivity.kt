@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ){
-                    unitConverter()
+                    UnitConverter()
                 }
             }
         }
@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun unitConverter(){
+fun UnitConverter(){
     BoxWithConstraints {
         val padding = maxWidth * 0.10f
 
@@ -58,6 +58,13 @@ fun unitConverter(){
             Row{
                 Text("Row2")
             }
+            Text("Result:")
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun UnitConverterPreview(){
+    UnitConverter()
 }
