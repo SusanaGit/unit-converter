@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
@@ -79,6 +80,9 @@ fun UnitConverter(){
                     DropdownMenuItem(text = { Text("Milimeters") }, onClick = { /*TODO*/ })
                 }
             }
+
+            Spacer(modifier = Modifier.width(16.dp))
+
             Box {
                 Button(onClick = {}) {
                     Text("Select")
