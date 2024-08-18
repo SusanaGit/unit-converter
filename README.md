@@ -1,6 +1,6 @@
 # Unit Conversion App
 
-![image](https://github.com/user-attachments/assets/3a06770c-781b-4485-8406-9cace7d8611e)
+<img src="https://github.com/user-attachments/assets/3a06770c-781b-4485-8406-9cace7d8611e" alt="Unit Conversion App Screenshot" width="400">
 
 Convert between different units of measurement with ease!
 
